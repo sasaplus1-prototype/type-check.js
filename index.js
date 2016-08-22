@@ -7,7 +7,7 @@ var isArray = (Array.isArray) ?
     return Array.isArray(value);
   } :
   function isArray(value) {
-    return (isObjectLike(value) && toString.call(value) === '[object Array]');
+    return (toString.call(value) === '[object Array]');
   };
 
 function isFunction(value) {
@@ -30,8 +30,7 @@ function isRegExp(value) {
 
 function isString(value) {
   return (
-    typeof value === 'string' ||
-      (isObjectLike(value) && toString.call(value) === '[object String]')
+    typeof value === 'string' || toString.call(value) === '[object String]'
   );
 }
 
