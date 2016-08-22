@@ -42,6 +42,14 @@ function isFunction(value) {
   );
 }
 
+var isMap = (typeof Map !== 'undefined') ?
+  function isMap(value) {
+    return (toString.call(value) === '[object Map]');
+  } :
+  function isMap() {
+    return false;
+  };
+
 function isNumber(value) {
   return (
     typeof value === 'number' || toString.call(value) === '[object Number]'
@@ -56,9 +64,23 @@ function isObject(value) {
   return (isObjectLike(value) && toString.call(value) === '[object Object]');
 }
 
+function isPromise(value) {
+  return (
+    isObjectLike(value) && isFunction(value.then) && isFunction(value['catch'])
+  );
+}
+
 function isRegExp(value) {
   return (toString.call(value) === '[object RegExp]');
 }
+
+var isSet = (typeof Set !== 'undefined') ?
+  function isSet() {
+    return (toString.call(value) === '[object Set]');
+  } :
+  function isSet() {
+    return false;
+  };
 
 function isString(value) {
   return (
@@ -77,6 +99,22 @@ var isSymbol = (typeof Symbol !== 'undefined' && typeof Symbol() === 'symbol') ?
     return false;
   };
 
+var isWeakMap = (typeof WeakMap !== 'undefined') ?
+  function isWeakMap(value) {
+    return (toString.call(value) === '[object WeakMap]');
+  } :
+  function isWeakMap() {
+    return false;
+  };
+
+var isWeakSet = (typeof WeakSet !== 'undefined') ?
+  function isWeakSet(value) {
+    return (toString.call(value) === '[object WeakSet]');
+  } :
+  function isWeakSet() {
+    return false;
+  };
+
 module.exports = {
   isArguments: isArguments,
   isArray: isArray,
@@ -85,10 +123,15 @@ module.exports = {
   isDate: isDate,
   isError: isError,
   isFunction: isFunction,
+  isMap: isMap,
   isNumber: isNumber,
   isObjectLike: isObjectLike,
   isObject: isObject,
+  isPromise: isPromise,
   isRegExp: isRegExp,
+  isSet: isSet,
   isString: isString,
-  isSymbol: isSymbol
+  isSymbol: isSymbol,
+  isWeakMap: isWeakMap,
+  isWeakSet: isWeakSet
 };
