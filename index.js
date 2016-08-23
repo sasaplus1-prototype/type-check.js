@@ -64,7 +64,7 @@ function isObject(value) {
   return (isObjectLike(value) && toString.call(value) === '[object Object]');
 }
 
-function isPromise(value) {
+function isPromiseLike(value) {
   return (
     isObjectLike(value) && isFunction(value.then) && isFunction(value['catch'])
   );
