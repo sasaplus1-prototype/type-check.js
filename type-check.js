@@ -194,6 +194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isNumber: isNumber,
 	  isObjectLike: isObjectLike,
 	  isObject: isObject,
+	  isPromiseLike: isPromiseLike,
 	  isPromise: isPromise,
 	  isRegExp: isRegExp,
 	  isSet: isSet,
