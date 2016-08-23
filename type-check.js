@@ -63,8 +63,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
+	var call = 'call';
+
 	function isArguments(value) {
-	  return (toString.call(value) === '[object Arguments]');
+	  return (toString[call](value) === '[object Arguments]');
 	}
 
 	var isArray = (Array.isArray) ?
@@ -72,12 +74,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return Array.isArray(value);
 	  } :
 	  function isArray(value) {
-	    return (toString.call(value) === '[object Array]');
+	    return (toString[call](value) === '[object Array]');
 	  };
 
 	function isBoolean(value) {
 	  return (
-	    typeof value === 'boolean' || toString.call(value) === '[object Boolean]'
+	    typeof value === 'boolean' || toString[call](value) === '[object Boolean]'
 	  );
 	}
 
@@ -90,22 +92,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	function isDate(value) {
-	  return (toString.call(value) === '[object Date]');
+	  return (toString[call](value) === '[object Date]');
 	}
 
 	function isError(value) {
-	  return (toString.call(value) === '[object Error]');
+	  return (toString[call](value) === '[object Error]');
 	}
 
 	function isFunction(value) {
 	  return (
-	    typeof value === 'function' || toString.call(value) === '[object Function]'
+	    typeof value === 'function' || toString[call](value) === '[object Function]'
 	  );
 	}
 
 	var isMap = (typeof Map !== 'undefined') ?
 	  function isMap(value) {
-	    return (toString.call(value) === '[object Map]');
+	    return (toString[call](value) === '[object Map]');
 	  } :
 	  function isMap() {
 	    return false;
@@ -113,7 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function isNumber(value) {
 	  return (
-	    typeof value === 'number' || toString.call(value) === '[object Number]'
+	    typeof value === 'number' || toString[call](value) === '[object Number]'
 	  );
 	}
 
@@ -122,22 +124,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function isObject(value) {
-	  return (isObjectLike(value) && toString.call(value) === '[object Object]');
+	  return (isObjectLike(value) && toString[call](value) === '[object Object]');
 	}
 
-	function isPromise(value) {
+	function isPromiseLike(value) {
 	  return (
 	    isObjectLike(value) && isFunction(value.then) && isFunction(value['catch'])
 	  );
 	}
 
+	function isPromise(value) {
+	  return (isPromiseLike(value) && toString[call](value) === '[object Promise]');
+	}
+
 	function isRegExp(value) {
-	  return (toString.call(value) === '[object RegExp]');
+	  return (toString[call](value) === '[object RegExp]');
 	}
 
 	var isSet = (typeof Set !== 'undefined') ?
 	  function isSet() {
-	    return (toString.call(value) === '[object Set]');
+	    return (toString[call](value) === '[object Set]');
 	  } :
 	  function isSet() {
 	    return false;
@@ -145,7 +151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function isString(value) {
 	  return (
-	    typeof value === 'string' || toString.call(value) === '[object String]'
+	    typeof value === 'string' || toString[call](value) === '[object String]'
 	  );
 	}
 
@@ -153,7 +159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function isSymbol(value) {
 	    return (
 	      // NOTE: `typeof Object(Symbol())` returns 'object', but it is Symbol.
-	      typeof value === 'symbol' || toString.call(value) === '[object Symbol]'
+	      typeof value === 'symbol' || toString[call](value) === '[object Symbol]'
 	    );
 	  } :
 	  function isSymbol() {
@@ -162,7 +168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var isWeakMap = (typeof WeakMap !== 'undefined') ?
 	  function isWeakMap(value) {
-	    return (toString.call(value) === '[object WeakMap]');
+	    return (toString[call](value) === '[object WeakMap]');
 	  } :
 	  function isWeakMap() {
 	    return false;
@@ -170,7 +176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var isWeakSet = (typeof WeakSet !== 'undefined') ?
 	  function isWeakSet(value) {
-	    return (toString.call(value) === '[object WeakSet]');
+	    return (toString[call](value) === '[object WeakSet]');
 	  } :
 	  function isWeakSet() {
 	    return false;
