@@ -70,6 +70,10 @@ function isPromiseLike(value) {
   );
 }
 
+function isPromise(value) {
+  return (isPromiseLike(value) && toString.call(value) === '[object Promise]');
+}
+
 function isRegExp(value) {
   return (toString.call(value) === '[object RegExp]');
 }
