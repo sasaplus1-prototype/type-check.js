@@ -142,7 +142,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	var isSet = (typeof Set !== 'undefined') ?
-	  function isSet() {
+	  function isSet(value) {
 	    return (toString[call](value) === '[object Set]');
 	  } :
 	  function isSet() {
