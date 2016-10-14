@@ -81,7 +81,7 @@ function isRegExp(value) {
 }
 
 var isSet = (typeof Set !== 'undefined') ?
-  function isSet() {
+  function isSet(value) {
     return (toString[call](value) === '[object Set]');
   } :
   function isSet() {
