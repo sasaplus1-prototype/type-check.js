@@ -1,22 +1,38 @@
 {
   "name": "type-check",
-  "version": "0.3.2",
-  "author": "sasa+1 <sasaplus1@gmail.com>",
   "description": "type check",
-  "main": "./index.js",
+  "version": "1.0.0",
+  "author": "sasa+1 <sasaplus1@gmail.com>",
+  "devDependencies": {
+    "babel-core": "^6.20.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.12.2",
+    "fixpack": "^2.3.1",
+    "glob": "^7.1.1",
+    "npm-run-all": "^3.1.2",
+    "webpack": "^1.14.0"
+  },
   "license": "MIT",
+  "main": "./index.js",
+  "private": true,
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/sasaplus1-prototype/type-check.js.git"
   },
   "scripts": {
-    "build": "npm run compile && npm run minify",
-    "compile": "npm run webpack -- --output-file type-check.js",
-    "minify": "npm run webpack -- --optimize-minimize --output-file type-check.min.js",
-    "webpack": "webpack --colors --display-error-details --progress"
-  },
-  "devDependencies": {
-    "webpack": "^1.13.2"
+    "build": "run-p compile:* minify:*",
+    "compile:main": "npm run webpack:main -- --output-filename ${npm_package_name}.js",
+    "compile:subs": "npm run webpack:subs",
+    "eslint": "eslint",
+    "export": "git checkout-index -a -f --prefix",
+    "fixpack": "fixpack",
+    "lint": "npm run eslint -- .",
+    "minify:main": "NODE_ENV=production npm run webpack:main -- --optimize-minimize --output-filename ${npm_package_name}.min.js",
+    "minify:subs": "NODE_ENV=production npm run webpack:subs -- --optimize-minimize",
+    "webpack": "webpack --colors --display-error-details --progress",
+    "webpack:main": "npm run webpack -- --config webpack.main.config.js",
+    "webpack:subs": "npm run webpack -- --config webpack.subs.config.js"
   }
 }
