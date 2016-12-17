@@ -1,5 +1,5 @@
 /*!
- * @license type-check.js ver.1.0.0 Copyright(c) 2016 sasa+1
+ * @license type-check.js ver.1.0.1 Copyright(c) 2016 sasa+1
  * https://github.com/sasaplus1-prototype/type-check.js
  * Released under the MIT license.
  */
