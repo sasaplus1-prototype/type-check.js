@@ -1,7 +1,7 @@
 {
   "name": "type-check",
   "description": "type check",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "author": "sasa+1 <sasaplus1@gmail.com>",
   "devDependencies": {
     "babel-core": "^6.20.0",
