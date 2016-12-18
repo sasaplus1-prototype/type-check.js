@@ -1,5 +1,5 @@
 /*!
- * @license type-check.js ver.2.0.0 Copyright(c) 2016 sasa+1
+ * @license type-check.js ver.2.0.1 Copyright(c) 2016 sasa+1
  * https://github.com/sasaplus1-prototype/type-check.js
  * Released under the MIT license.
  */
@@ -82,6 +82,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isWeakSet: __webpack_require__(18)
 	};
 
+
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
@@ -89,8 +90,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	module.exports = function isObjectLike(value) {
-	  return value !== null && typeof value === 'object';
+	  return (value !== null && typeof value === 'object');
 	};
+
 
 /***/ },
 /* 2 */
@@ -101,8 +103,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isFunction(value) {
-	  return typeof value === 'function' || toString.call(value) === '[object Function]';
+	  return (
+	    typeof value === 'function' || toString.call(value) === '[object Function]'
+	  );
 	};
+
 
 /***/ },
 /* 3 */
@@ -111,11 +116,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var isFunction = __webpack_require__(2),
-	    isObjectLike = __webpack_require__(1);
+	      isObjectLike = __webpack_require__(1);
 
 	module.exports = function isPromiseLike(value) {
-	  return isObjectLike(value) && isFunction(value.then) && isFunction(value['catch']);
+	  return (
+	    isObjectLike(value) && isFunction(value.then) && isFunction(value['catch'])
+	  );
 	};
+
 
 /***/ },
 /* 4 */
@@ -126,8 +134,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isArguments(value) {
-	  return toString.call(value) === '[object Arguments]';
+	  return (toString.call(value) === '[object Arguments]');
 	};
+
 
 /***/ },
 /* 5 */
@@ -137,11 +146,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = Array.isArray ? function isArray(value) {
-	  return Array.isArray(value);
-	} : function isArray(value) {
-	  return toString.call(value) === '[object Array]';
-	};
+	module.exports = (Array.isArray) ?
+	  function isArray(value) {
+	    return Array.isArray(value);
+	  } :
+	  function isArray(value) {
+	    return (toString.call(value) === '[object Array]');
+	  };
+
 
 /***/ },
 /* 6 */
@@ -152,8 +164,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isBoolean(value) {
-	  return typeof value === 'boolean' || toString.call(value) === '[object Boolean]';
+	  return (
+	    typeof value === 'boolean' || toString.call(value) === '[object Boolean]'
+	  );
 	};
+
 
 /***/ },
 /* 7 */
@@ -161,11 +176,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = typeof Buffer === 'function' && Buffer.isBuffer ? function isBuffer(value) {
-	  return Buffer.isBuffer(value);
-	} : function isBuffer() {
-	  return false;
-	};
+	module.exports = (typeof Buffer === 'function' && Buffer.isBuffer) ?
+	  function isBuffer(value) {
+	    return Buffer.isBuffer(value);
+	  } :
+	  function isBuffer() {
+	    return false;
+	  };
+
 
 /***/ },
 /* 8 */
@@ -176,8 +194,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isDate(value) {
-	  return toString.call(value) === '[object Date]';
+	  return (toString.call(value) === '[object Date]');
 	};
+
 
 /***/ },
 /* 9 */
@@ -188,8 +207,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isError(value) {
-	  return toString.call(value) === '[object Error]';
+	  return (toString.call(value) === '[object Error]');
 	};
+
 
 /***/ },
 /* 10 */
@@ -199,11 +219,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof Map === 'function' ? function isMap(value) {
-	  return toString.call(value) === '[object Map]';
-	} : function isMap() {
-	  return false;
-	};
+	module.exports = (typeof Map === 'function') ?
+	  function isMap(value) {
+	    return (toString.call(value) === '[object Map]');
+	  } :
+	  function isMap() {
+	    return false;
+	  };
+
 
 /***/ },
 /* 11 */
@@ -214,8 +237,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isNumber(value) {
-	  return typeof value === 'number' || toString.call(value) === '[object Number]';
+	  return (
+	    typeof value === 'number' || toString.call(value) === '[object Number]'
+	  );
 	};
+
 
 /***/ },
 /* 12 */
@@ -228,8 +254,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isObject(value) {
-	  return isObjectLike(value) && toString.call(value) === '[object Object]';
+	  return (isObjectLike(value) && toString.call(value) === '[object Object]');
 	};
+
 
 /***/ },
 /* 13 */
@@ -242,8 +269,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isPromise(value) {
-	  return isPromiseLike(value) && toString.call(value) === '[object Promise]';
+	  return (isPromiseLike(value) && toString.call(value) === '[object Promise]');
 	};
+
 
 /***/ },
 /* 14 */
@@ -254,8 +282,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var toString = Object.prototype.toString;
 
 	module.exports = function isRegExp(value) {
-	  return toString.call(value) === '[object RegExp]';
+	  return (toString.call(value) === '[object RegExp]');
 	};
+
 
 /***/ },
 /* 15 */
@@ -265,11 +294,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof Set === 'function' ? function isSet(value) {
-	  return toString.call(value) === '[object Set]';
-	} : function isSet() {
-	  return false;
-	};
+	module.exports = (typeof Set === 'function') ?
+	  function isSet(value) {
+	    return (toString.call(value) === '[object Set]');
+	  } :
+	  function isSet() {
+	    return false;
+	  };
+
 
 /***/ },
 /* 16 */
@@ -279,14 +311,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof Symbol === 'function' && typeof Symbol() === 'symbol' ? function isSymbol(value) {
-	  return (
-	    // NOTE: `typeof Object(Symbol())` returns 'object', but it is Symbol.
-	    typeof value === 'symbol' || toString.call(value) === '[object Symbol]'
-	  );
-	} : function isSymbol() {
-	  return false;
-	};
+	module.exports = (
+	    typeof Symbol === 'function' && typeof Symbol() === 'symbol'
+	  ) ?
+	  function isSymbol(value) {
+	    return (
+	      // NOTE: `typeof Object(Symbol())` returns 'object', but it is Symbol.
+	      typeof value === 'symbol' || toString.call(value) === '[object Symbol]'
+	    );
+	  } :
+	  function isSymbol() {
+	    return false;
+	  };
+
 
 /***/ },
 /* 17 */
@@ -296,11 +333,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof WeakMap === 'function' ? function isWeakMap(value) {
-	  return toString.call(value) === '[object WeakMap]';
-	} : function isWeakMap() {
-	  return false;
-	};
+	module.exports = (typeof WeakMap === 'function') ?
+	  function isWeakMap(value) {
+	    return (toString.call(value) === '[object WeakMap]');
+	  } :
+	  function isWeakMap() {
+	    return false;
+	  };
+
 
 /***/ },
 /* 18 */
@@ -310,11 +350,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof WeakSet === 'function' ? function isWeakSet(value) {
-	  return toString.call(value) === '[object WeakSet]';
-	} : function isWeakSet() {
-	  return false;
-	};
+	module.exports = (typeof WeakSet === 'function') ?
+	  function isWeakSet(value) {
+	    return (toString.call(value) === '[object WeakSet]');
+	  } :
+	  function isWeakSet() {
+	    return false;
+	  };
+
 
 /***/ }
 /******/ ])
