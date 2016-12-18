@@ -1,6 +1,6 @@
 'use strict';
 
-const isFunction = require('./is-function'),
+var isFunction = require('./is-function'),
       isObjectLike = require('./is-object-like');
 
 module.exports = function isPromiseLike(value) {

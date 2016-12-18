@@ -18,5 +18,5 @@ module.exports = {
   isSet: require('./is-set'),
   isSymbol: require('./is-symbol'),
   isWeakMap: require('./is-weak-map'),
-  isWeakSet: require('./is-weak-set'),
+  isWeakSet: require('./is-weak-set')
 };
