@@ -1,6 +1,6 @@
 'use strict';
 
-const toString = Object.prototype.toString;
+var toString = Object.prototype.toString;
 
 module.exports = (
     typeof Symbol === 'function' && typeof Symbol() === 'symbol'
