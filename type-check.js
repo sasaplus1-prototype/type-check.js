@@ -1,5 +1,5 @@
 /*!
- * @license type-check.js ver.1.0.1 Copyright(c) 2016 sasa+1
+ * @license type-check.js ver.2.0.0 Copyright(c) 2016 sasa+1
  * https://github.com/sasaplus1-prototype/type-check.js
  * Released under the MIT license.
  */
@@ -88,10 +88,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 	module.exports = function isObjectLike(value) {
-	  return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
+	  return value !== null && typeof value === 'object';
 	};
 
 /***/ },
@@ -163,7 +161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	module.exports = typeof Buffer !== 'undefined' && Buffer.isBuffer ? function isBuffer(value) {
+	module.exports = typeof Buffer === 'function' && Buffer.isBuffer ? function isBuffer(value) {
 	  return Buffer.isBuffer(value);
 	} : function isBuffer() {
 	  return false;
@@ -201,7 +199,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof Map !== 'undefined' ? function isMap(value) {
+	module.exports = typeof Map === 'function' ? function isMap(value) {
 	  return toString.call(value) === '[object Map]';
 	} : function isMap() {
 	  return false;
@@ -267,7 +265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof Set !== 'undefined' ? function isSet(value) {
+	module.exports = typeof Set === 'function' ? function isSet(value) {
 	  return toString.call(value) === '[object Set]';
 	} : function isSet() {
 	  return false;
@@ -279,14 +277,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof Symbol !== 'undefined' && _typeof(Symbol()) === 'symbol' ? function isSymbol(value) {
+	module.exports = typeof Symbol === 'function' && typeof Symbol() === 'symbol' ? function isSymbol(value) {
 	  return (
 	    // NOTE: `typeof Object(Symbol())` returns 'object', but it is Symbol.
-	    (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'symbol' || toString.call(value) === '[object Symbol]'
+	    typeof value === 'symbol' || toString.call(value) === '[object Symbol]'
 	  );
 	} : function isSymbol() {
 	  return false;
@@ -300,7 +296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof WeakMap !== 'undefined' ? function isWeakMap(value) {
+	module.exports = typeof WeakMap === 'function' ? function isWeakMap(value) {
 	  return toString.call(value) === '[object WeakMap]';
 	} : function isWeakMap() {
 	  return false;
@@ -314,7 +310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var toString = Object.prototype.toString;
 
-	module.exports = typeof WeakSet !== 'undefined' ? function isWeakSet(value) {
+	module.exports = typeof WeakSet === 'function' ? function isWeakSet(value) {
 	  return toString.call(value) === '[object WeakSet]';
 	} : function isWeakSet() {
 	  return false;
