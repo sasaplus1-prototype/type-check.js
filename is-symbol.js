@@ -3,7 +3,7 @@
 const toString = Object.prototype.toString;
 
 module.exports = (
-    typeof Symbol !== 'undefined' && typeof Symbol() === 'symbol'
+    typeof Symbol === 'function' && typeof Symbol() === 'symbol'
   ) ?
   function isSymbol(value) {
     return (

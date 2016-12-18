@@ -2,7 +2,7 @@
 
 const toString = Object.prototype.toString;
 
-module.exports = (typeof Set !== 'undefined') ?
+module.exports = (typeof Set === 'function') ?
   function isSet(value) {
     return (toString.call(value) === '[object Set]');
   } :

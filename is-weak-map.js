@@ -2,7 +2,7 @@
 
 const toString = Object.prototype.toString;
 
-module.exports = (typeof WeakMap !== 'undefined') ?
+module.exports = (typeof WeakMap === 'function') ?
   function isWeakMap(value) {
     return (toString.call(value) === '[object WeakMap]');
   } :

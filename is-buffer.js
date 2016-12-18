@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (typeof Buffer !== 'undefined' && Buffer.isBuffer) ?
+module.exports = (typeof Buffer === 'function' && Buffer.isBuffer) ?
   function isBuffer(value) {
     return Buffer.isBuffer(value);
   } :
